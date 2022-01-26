@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import MainInfo from '../components/MainInfo';
 
 const url = 'https://tracking.bosta.co/shipments/track/'
 
@@ -28,9 +29,7 @@ function TrackShipment() {
 
   console.table(TransitEvents)
 
-  return <div>
-    {'hello'}
-  </div>;
+  return <MainInfo />
 }
 
 export default TrackShipment;
