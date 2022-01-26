@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+
 import MainInfo from '../components/MainInfo';
+import Stepper from '../components/Stepper'
 
 const url = 'https://tracking.bosta.co/shipments/track/'
 
@@ -29,7 +31,7 @@ function TrackShipment() {
 
   console.table(TransitEvents)
 
-  return <MainInfo />
+  return <Stepper />
 }
 
 export default TrackShipment;
