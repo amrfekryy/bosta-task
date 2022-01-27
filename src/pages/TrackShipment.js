@@ -15,7 +15,8 @@ const shipments = ['6636234', '7234258', '9442984', '1094442']
 
 function getStateColor(state) {
   return {
-    "DELIVERED": "success.light"
+    "DELIVERED": "success.light",
+    "DELIVERED_TO_SENDER": "error.light"
   }[state] || ""
 }
 

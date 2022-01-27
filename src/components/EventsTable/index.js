@@ -18,9 +18,14 @@ function EventsTable({ TransitEvents }) {
       <Title text={'Shipment Details'} />
 
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{ minWidth: 650 }} >
           <TableHead>
-            <TableRow>
+            <TableRow sx={{
+              bgcolor: '#FAFAFA',
+              '& .MuiTableCell-root': {
+                color: "text.secondary"
+              }
+            }}>
               <TableCell>Hub</TableCell>
               <TableCell>Date</TableCell>
               <TableCell>Time</TableCell>
@@ -28,7 +33,7 @@ function EventsTable({ TransitEvents }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {TransitEvents.map(({ state, timestamp, hub, reason }, i) => (
+            {TransitEvents?.map(({ state, timestamp, hub, reason }, i) => (
               <TableRow
                 key={timestamp}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
