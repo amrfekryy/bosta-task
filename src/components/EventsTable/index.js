@@ -18,7 +18,7 @@ function EventsTable({ TransitEvents }) {
       <Title text={'Shipment Details'} />
 
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} >
+        <Table sx={{ minWidth: 650 }} size='small'>
           <TableHead>
             <TableRow sx={{
               bgcolor: '#FAFAFA',
