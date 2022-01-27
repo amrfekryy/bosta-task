@@ -1,11 +1,13 @@
 import './App.css';
 import TrackShipment from './pages/TrackShipment';
-
+import Layout from './pages/Layout'
 
 function App() {
   return (
     <div className="App">
-      <TrackShipment />
+      <Layout>
+        <TrackShipment />
+      </Layout>
     </div>
   );
 }

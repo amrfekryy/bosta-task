@@ -3,6 +3,11 @@ import { useEffect, useState } from 'react';
 import MainInfo from '../components/MainInfo';
 import Stepper from '../components/Stepper'
 import EventsTable from '../components/EventsTable'
+import Address from '../components/Address'
+
+import {
+  Grid, Divider, Paper
+} from '@mui/material'
 
 const url = 'https://tracking.bosta.co/shipments/track/'
 
@@ -27,12 +32,30 @@ function TrackShipment() {
     SupportPhoneNumbers,
     TrackingNumber,
     TrackingURL,
-    TransitEvents=[]
+    TransitEvents = []
   } = data
 
   console.table(TransitEvents)
 
-  return <EventsTable {...{TransitEvents}}/>
+  return (
+    <>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Paper elevation={0} variant="outlined">
+            <MainInfo />
+            <Divider sx={{ my: 3 }} />
+            <Stepper />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={8}>
+          <EventsTable {...{ TransitEvents }} />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Address />
+        </Grid>
+      </Grid>
+    </>
+  )
 }
 
 export default TrackShipment;
