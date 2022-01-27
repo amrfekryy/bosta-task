@@ -2,8 +2,9 @@ import React from 'react';
 import {
   Stack, Box, Typography, Grid
 } from '@mui/material'
+import { formatDate } from 'helpers/functions'
 
-function Item({title="title", value="value", color}) {
+function Item({ title = "title", value = "value", color }) {
   return <Stack spacing={0.5}
     alignItems={"center"}
   >
@@ -15,19 +16,19 @@ function Item({title="title", value="value", color}) {
 function MainInfo({ lastUpdate, shipmentNumber, stateColor, state, deliveryDate }) {
 
   const info = [
-    {title: `Shipment No. ${shipmentNumber}`, value: state, color: stateColor},
-    {title: 'Last Update', value: lastUpdate},
-    {title: 'Seller Name', value: 'SOUQ.com'},
-    {title: 'Delivery Date', value: deliveryDate},
+    { title: `Shipment No. ${shipmentNumber}`, value: state, color: stateColor },
+    { title: 'Last Update', value: formatDate(lastUpdate, 'ar', 'full') },
+    { title: 'Vendor Name', value: 'SOUQ.com' },
+    { title: 'Delivery Date', value: formatDate(deliveryDate, 'ar', 'day-date') },
   ]
 
-  return <Grid container  sx={{p: 2}}>
-    {info.map(({title, value, color}) => {
+  return <Grid container sx={{ p: 2 }}>
+    {info.map(({ title, value, color }) => {
       return <Grid key={title} item xs={6} sm={3}>
-      <Item {...{title, value, color}}/>
-    </Grid>
+        <Item {...{ title, value, color }} />
+      </Grid>
     })}
-  </Grid>  
+  </Grid>
 }
 
 export default MainInfo;

@@ -10,7 +10,8 @@ import {
   Typography,
   Stack
 } from '@mui/material'
-import Title from '../Title'
+import Title from 'components/Title'
+import { formatDate } from 'helpers/functions'
 
 function EventsTable({ TransitEvents }) {
   return (
@@ -18,7 +19,7 @@ function EventsTable({ TransitEvents }) {
       <Title text={'Shipment Details'} />
 
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} size='small'>
+        <Table sx={{ minWidth: 650 }}>
           <TableHead>
             <TableRow sx={{
               bgcolor: '#FAFAFA',
@@ -39,8 +40,8 @@ function EventsTable({ TransitEvents }) {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell>{hub}</TableCell>
-                <TableCell>{timestamp}</TableCell>
-                <TableCell>{timestamp}</TableCell>
+                <TableCell>{formatDate(timestamp, 'ar', 'date')}</TableCell>
+                <TableCell>{formatDate(timestamp, 'ar', 'time')}</TableCell>
                 <TableCell>{state}</TableCell>
               </TableRow>
             ))}
