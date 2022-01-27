@@ -25,7 +25,7 @@ function TrackShipment() {
 
   useEffect(() => {
 
-    fetch(url + shipments[2])
+    fetch(url + shipments[1])
       .then(res => res.json())
       .then(data => {
         // console.log('shipmentData', data);

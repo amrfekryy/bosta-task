@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 
 function Title({text}) {
   return (
-    <Typography variant='h6'>{text}</Typography>
+    <Typography sx={{py: 2}}>{text}</Typography>
   );
 }
 

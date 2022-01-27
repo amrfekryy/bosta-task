@@ -36,7 +36,7 @@ const theme = createTheme({
 });
 
 export default function MyThemeProvider({ children }) {
-  const rtl = false
+  const rtl = true
   return (
     <ThemeProvider theme={theme}>
       {rtl? <RTL>{children}</RTL> : children}
