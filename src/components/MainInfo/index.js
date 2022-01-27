@@ -3,6 +3,7 @@ import {
   Stack, Box, Typography, Grid
 } from '@mui/material'
 import { formatDate } from 'helpers/functions'
+import { useTranslation } from 'react-i18next';
 
 function Item({ title = "title", value = "value", color }) {
   return <Stack spacing={0.5}
@@ -14,12 +15,13 @@ function Item({ title = "title", value = "value", color }) {
 }
 
 function MainInfo({ lastUpdate, shipmentNumber, stateColor, state, deliveryDate }) {
+  const { t, i18n: { language } } = useTranslation()
 
   const info = [
-    { title: `Shipment No. ${shipmentNumber}`, value: state, color: stateColor },
-    { title: 'Last Update', value: formatDate(lastUpdate, 'ar', 'full') },
-    { title: 'Vendor Name', value: 'SOUQ.com' },
-    { title: 'Delivery Date', value: formatDate(deliveryDate, 'ar', 'day-date') },
+    { title: t('Shipment No. ') + shipmentNumber, value: t(state), color: stateColor },
+    { title: t('Last Update'), value: formatDate(lastUpdate, language, 'full') },
+    { title: t('Vendor Name'), value: 'SOUQ.com' },
+    { title: t('Delivery Date'), value: formatDate(deliveryDate, language, 'day-date') },
   ]
 
   return <Grid container sx={{ p: 2 }}>

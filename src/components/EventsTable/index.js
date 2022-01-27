@@ -12,8 +12,11 @@ import {
 } from '@mui/material'
 import Title from 'components/Title'
 import { formatDate } from 'helpers/functions'
+import { useTranslation } from 'react-i18next';
 
 function EventsTable({ TransitEvents }) {
+  const { t, i18n: { language } } = useTranslation()
+
   return (
     <>
       <Title text={'Shipment Details'} />
@@ -27,10 +30,10 @@ function EventsTable({ TransitEvents }) {
                 color: "text.secondary"
               }
             }}>
-              <TableCell>Hub</TableCell>
-              <TableCell>Date</TableCell>
-              <TableCell>Time</TableCell>
-              <TableCell>Details</TableCell>
+              <TableCell>{t('Hub')}</TableCell>
+              <TableCell>{t('Date')}</TableCell>
+              <TableCell>{t('Time')}</TableCell>
+              <TableCell>{t('Details')}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -39,10 +42,10 @@ function EventsTable({ TransitEvents }) {
                 key={timestamp}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell>{hub}</TableCell>
-                <TableCell>{formatDate(timestamp, 'ar', 'date')}</TableCell>
-                <TableCell>{formatDate(timestamp, 'ar', 'time')}</TableCell>
-                <TableCell>{state}</TableCell>
+                <TableCell>{t(hub)}</TableCell>
+                <TableCell>{formatDate(timestamp, language, 'date')}</TableCell>
+                <TableCell>{formatDate(timestamp, language, 'time')}</TableCell>
+                <TableCell>{t(state)}</TableCell>
               </TableRow>
             ))}
           </TableBody>

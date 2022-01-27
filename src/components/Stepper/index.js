@@ -1,19 +1,20 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
+
 import Stack from '@mui/material/Stack';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Check from '@mui/icons-material/Check';
-import SettingsIcon from '@mui/icons-material/Settings';
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
-import VideoLabelIcon from '@mui/icons-material/VideoLabel';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
+
+import Check from '@mui/icons-material/Check';
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import TaskIcon from '@mui/icons-material/Task';
+
+import { useTranslation } from 'react-i18next';
 
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
@@ -141,6 +142,8 @@ function ColorlibStepIcon(props) {
 const steps = ['Ticket Created', 'Package Received', 'Out for Delivery', 'Delivered'];
 
 export default function CustomizedSteppers() {
+  const { t } = useTranslation()
+
   return (
     <Stack sx={{ width: '100%', p: 2 }} spacing={4}>
       {/* <Stepper alternativeLabel activeStep={1} connector={<QontoConnector />}>
@@ -153,7 +156,7 @@ export default function CustomizedSteppers() {
       <Stepper alternativeLabel activeStep={1} connector={<ColorlibConnector />}>
         {steps.map((label) => (
           <Step key={label}>
-            <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+            <StepLabel StepIconComponent={ColorlibStepIcon}>{t(label)}</StepLabel>
           </Step>
         ))}
       </Stepper>
