@@ -4,6 +4,7 @@ import MainInfo from '../components/MainInfo';
 import Stepper from '../components/Stepper'
 import EventsTable from '../components/EventsTable'
 import Address from '../components/Address'
+import ReportProblem from '../components/ReportProblem';
 
 import {
   Grid, Divider, Paper
@@ -51,7 +52,14 @@ function TrackShipment() {
           <EventsTable {...{ TransitEvents }} />
         </Grid>
         <Grid item xs={12} md={4}>
-          <Address />
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={6} md={12}>
+              <Address />
+            </Grid>
+            <Grid item xs={12} sm={6} md={12}>
+              <ReportProblem />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </>

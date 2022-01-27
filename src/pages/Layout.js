@@ -8,7 +8,7 @@ function Layout({ children }) {
     <>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Box sx={{ bgcolor: '#cfe8fc', height: '100vh', py: 5 }} >
+        <Box sx={{ height: '100vh', py: 5 }} >
           {children}
         </Box>
       </Container>
