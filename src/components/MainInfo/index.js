@@ -1,27 +1,33 @@
 import React from 'react';
 import {
-  Stack, Box, Typography
+  Stack, Box, Typography, Grid
 } from '@mui/material'
 
-function Item({title="title", value="value"}) {
-  return <div>
-    <Typography variant="overline">{title}</Typography>
-    <Typography>{value}</Typography>
-  </div>
+function Item({title="title", value="value", color}) {
+  return <Stack spacing={0.5}
+    alignItems={"center"}
+  >
+    <Typography variant="overline" color="text.disabled">{title}</Typography>
+    <Typography color={color}>{value}</Typography>
+  </Stack>
 }
 
-const titles = ['Shipment No.', 'Last Update', 'Seller Name', 'Delivery Date']
+function MainInfo({ lastUpdate, shipmentNumber, stateColor, state, deliveryDate }) {
 
-function MainInfo() {
-  return <Stack direction="row" justifyContent="space-around" flexWrap="wrap"
-    sx={{p: 2}}
-  >
-    {titles.map(title => {
-      return <Item {...{title}}/>
+  const info = [
+    {title: `Shipment No. ${shipmentNumber}`, value: state, color: stateColor},
+    {title: 'Last Update', value: lastUpdate},
+    {title: 'Seller Name', value: 'SOUQ.com'},
+    {title: 'Delivery Date', value: deliveryDate},
+  ]
+
+  return <Grid container  sx={{p: 2}}>
+    {info.map(({title, value, color}) => {
+      return <Grid key={title} item xs={6} sm={3}>
+      <Item {...{title, value, color}}/>
+    </Grid>
     })}
-  </Stack>
-  
-  
+  </Grid>  
 }
 
 export default MainInfo;
