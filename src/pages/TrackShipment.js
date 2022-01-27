@@ -40,11 +40,11 @@ function TrackShipment() {
 
   return (
     <>
-      <Grid container spacing={2}>
+      <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper elevation={0} variant="outlined">
             <MainInfo />
-            <Divider sx={{ my: 3 }} />
+            <Divider />
             <Stepper />
           </Paper>
         </Grid>
@@ -52,7 +52,7 @@ function TrackShipment() {
           <EventsTable {...{ TransitEvents }} />
         </Grid>
         <Grid item xs={12} md={4}>
-          <Grid container spacing={1}>
+          <Grid container spacing={2}>
             <Grid item xs={12} sm={6} md={12}>
               <Address />
             </Grid>

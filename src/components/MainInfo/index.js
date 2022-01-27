@@ -4,16 +4,18 @@ import {
 } from '@mui/material'
 
 function Item({title="title", value="value"}) {
-  return <Stack spacing={1}>
+  return <div>
     <Typography variant="overline">{title}</Typography>
-    <Typography variant="h6">{value}</Typography>
-  </Stack>
+    <Typography>{value}</Typography>
+  </div>
 }
 
-const titles = ['Shipment Number', 'Last Update', 'Seller Name', 'Delivery Date']
+const titles = ['Shipment No.', 'Last Update', 'Seller Name', 'Delivery Date']
 
 function MainInfo() {
-  return <Stack direction="row" justifyContent="space-around" flexWrap="wrap">
+  return <Stack direction="row" justifyContent="space-around" flexWrap="wrap"
+    sx={{p: 2}}
+  >
     {titles.map(title => {
       return <Item {...{title}}/>
     })}
