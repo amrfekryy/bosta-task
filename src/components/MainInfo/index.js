@@ -14,11 +14,11 @@ function Item({ title = "title", value = "value", color }) {
   </Stack>
 }
 
-function MainInfo({ lastUpdate, shipmentNumber, stateColor, state, deliveryDate }) {
+function MainInfo({ lastUpdate, shipmentNumber, status, deliveryDate }) {
   const { t, i18n: { language } } = useTranslation()
 
   const info = [
-    { title: t('Shipment No. ') + shipmentNumber, value: t(state), color: stateColor },
+    { title: t('Shipment No. ') + shipmentNumber, value: t(status.state), color: status.color },
     { title: t('Last Update'), value: formatDate(lastUpdate, language, 'full') },
     { title: t('Vendor Name'), value: 'SOUQ.com' },
     { title: t('Delivery Date'), value: formatDate(deliveryDate, language, 'day-date') },

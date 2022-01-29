@@ -85,14 +85,14 @@ function ColorlibStepIcon(props) {
 
 const steps = ['Ticket Created', 'Package Received', 'Out for Delivery', 'Delivered'];
 
-export default function CustomizedSteppers() {
+export default function CustomizedSteppers({status}) {
   const { t } = useTranslation()
   const { palette } = useTheme()
-  const statusColor = getValue(palette, 'success.light')
+  const statusColor = getValue(palette, status.color)
 
   return (
     <Stack sx={{ width: '100%', p: 2 }} spacing={4}>
-      <Stepper alternativeLabel activeStep={2} connector={<ColorlibConnector statusColor={statusColor} />}>
+      <Stepper alternativeLabel activeStep={status.step} connector={<ColorlibConnector statusColor={statusColor} />}>
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel
