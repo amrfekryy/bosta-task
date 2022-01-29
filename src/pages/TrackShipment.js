@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 
-import MainInfo from '../components/MainInfo';
-import Stepper from '../components/Stepper'
-import EventsTable from '../components/EventsTable'
-import Address from '../components/Address'
-import ReportProblem from '../components/ReportProblem';
+import MainInfo from 'components/MainInfo';
+import Stepper from 'components/Stepper'
+import EventsTable from 'components/EventsTable'
+import Address from 'components/Address'
+import ReportProblem from 'components/ReportProblem';
 
 import {
-  Grid, Divider, Paper
+  Grid, Divider, Paper, 
+  Zoom, Collapse, Fade
 } from '@mui/material'
 
 const url = 'https://tracking.bosta.co/shipments/track/'
@@ -21,7 +22,7 @@ function getStateColor(state) {
 }
 
 function TrackShipment() {
-  const [shipmentData, setShipmentData] = useState({});
+  const [shipmentData, setShipmentData] = useState(null);
 
   useEffect(() => {
 
@@ -41,14 +42,14 @@ function TrackShipment() {
     TrackingNumber: shipmentNumber,
     TransitEvents,
     PromisedDate: deliveryDate
-  } = shipmentData
+  } = shipmentData || {}
 
   console.table(TransitEvents)
 
   const stateColor = getStateColor(CurrentStatus?.state)
 
   return (
-    <>
+    // <Collapse in={!!shipmentData} orientation='horizontal' mountOnEnter unmountOnExit>
       <Grid container spacing={3}>
 
         <Grid item xs={12}>
@@ -84,7 +85,7 @@ function TrackShipment() {
         </Grid>
 
       </Grid>
-    </>
+    // </Collapse>
   )
 }
 
