@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 
 import Stack from '@mui/material/Stack';
@@ -15,114 +14,59 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import TaskIcon from '@mui/icons-material/Task';
 
 import { useTranslation } from 'react-i18next';
+import { getValue } from 'helpers/functions';
+import { useTheme } from '@mui/system';
 
-
-const QontoConnector = styled(StepConnector)(({ theme }) => ({
+const ColorlibConnector = styled(StepConnector)(({ theme, statusColor }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 10,
-    left: 'calc(-50% + 16px)',
-    right: 'calc(50% + 16px)',
+    top: 15,
+    left: 'calc(-50%)',
+    right: 'calc(50%)',
   },
   [`&.${stepConnectorClasses.active}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      borderColor: '#784af4',
+      backgroundColor: statusColor,
     },
   },
   [`&.${stepConnectorClasses.completed}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      borderColor: '#784af4',
+      backgroundColor: statusColor,
     },
   },
   [`& .${stepConnectorClasses.line}`]: {
-    borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
-    borderTopWidth: 3,
-    borderRadius: 1,
-  },
-}));
-
-const QontoStepIconRoot = styled('div')(({ theme, ownerState }) => ({
-  color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#eaeaf0',
-  display: 'flex',
-  height: 22,
-  alignItems: 'center',
-  ...(ownerState.active && {
-    color: '#784af4',
-  }),
-  '& .QontoStepIcon-completedIcon': {
-    color: '#784af4',
-    zIndex: 1,
-    fontSize: 18,
-  },
-  '& .QontoStepIcon-circle': {
-    width: 8,
-    height: 8,
-    borderRadius: '50%',
-    backgroundColor: 'currentColor',
-  },
-}));
-
-function QontoStepIcon(props) {
-  const { active, completed, className } = props;
-
-  return (
-    <QontoStepIconRoot ownerState={{ active }} className={className}>
-      {completed ? (
-        <Check className="QontoStepIcon-completedIcon" />
-      ) : (
-        <div className="QontoStepIcon-circle" />
-      )}
-    </QontoStepIconRoot>
-  );
-}
-
-const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
-  [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 22,
-  },
-  [`&.${stepConnectorClasses.active}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
-    },
-  },
-  [`&.${stepConnectorClasses.completed}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
-    },
-  },
-  [`& .${stepConnectorClasses.line}`]: {
-    height: 3,
+    height: 5,
     border: 0,
     backgroundColor:
-      theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
+      theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#ccc',
     borderRadius: 1,
   },
 }));
 
-const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
+const ColorlibStepIconRoot = styled('div')(({ statusColor, theme, ownerState }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#ccc',
   zIndex: 1,
   color: '#fff',
-  width: 50,
-  height: 50,
-  display: 'flex',
+  width: 30,
+  height: 30,
   borderRadius: '50%',
+  display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   ...(ownerState.active && {
-    backgroundImage:
-      'linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)',
+    backgroundColor: statusColor,
     boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
   }),
   ...(ownerState.completed && {
-    backgroundImage:
-      'linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)',
+    // position: 'relative',
+    // top: 7,
+    // width: 20,
+    // height: 20,  
+    backgroundColor: statusColor,
   }),
 }));
 
 function ColorlibStepIcon(props) {
-  const { active, completed, className, icon } = props;
+  const { active, completed, className, icon, statusColor } = props;
 
   const icons = {
     1: <ConfirmationNumberIcon />,
@@ -132,8 +76,8 @@ function ColorlibStepIcon(props) {
   };
 
   return (
-    <ColorlibStepIconRoot ownerState={{ completed, active }} className={className}>
-      {icons[icon]}
+    <ColorlibStepIconRoot statusColor={statusColor} ownerState={{ completed, active }} className={className}>
+      {completed ? <Check /> : icons[icon]}
     </ColorlibStepIconRoot>
   );
 }
@@ -143,20 +87,20 @@ const steps = ['Ticket Created', 'Package Received', 'Out for Delivery', 'Delive
 
 export default function CustomizedSteppers() {
   const { t } = useTranslation()
+  const { palette } = useTheme()
+  const statusColor = getValue(palette, 'success.light')
 
   return (
     <Stack sx={{ width: '100%', p: 2 }} spacing={4}>
-      {/* <Stepper alternativeLabel activeStep={1} connector={<QontoConnector />}>
+      <Stepper alternativeLabel activeStep={2} connector={<ColorlibConnector statusColor={statusColor} />}>
         {steps.map((label) => (
           <Step key={label}>
-            <StepLabel StepIconComponent={QontoStepIcon}>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper> */}
-      <Stepper alternativeLabel activeStep={1} connector={<ColorlibConnector />}>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel StepIconComponent={ColorlibStepIcon}>{t(label)}</StepLabel>
+            <StepLabel
+              StepIconComponent={ColorlibStepIcon}
+              StepIconProps={{ statusColor: statusColor }}
+            >
+              {t(label)}
+            </StepLabel>
           </Step>
         ))}
       </Stepper>

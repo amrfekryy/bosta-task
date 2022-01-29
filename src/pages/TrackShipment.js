@@ -17,7 +17,7 @@ const url = 'https://tracking.bosta.co/shipments/track/'
 function getStateColor(state) {
   return {
     "DELIVERED": "success.light",
-    "DELIVERED_TO_SENDER": "error.light"
+    "DELIVERED_TO_SENDER": "success.light"
   }[state] || ""
 }
 

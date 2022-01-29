@@ -24,7 +24,7 @@ export const resources = {
       "Vendor Name": "اسم التاجر",
       "Delivery Date": "موعد التسليم خلال",
       "Ticket Created": "تم إنشاء الشحنة",
-      "Package Received": "تم استلام الشحنة من التاجر",
+      "Package Received": "تم استلام الشحنة",
       "Out for Delivery": "الشحنة خرجت للتسليم",
       "Delivered": "تم التسليم",
       "Shipment Details": "تفاصيل الشحنة",
