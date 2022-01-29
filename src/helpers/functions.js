@@ -1,5 +1,6 @@
 
 export function formatDate(timestamp, lang, format) {
+  if (!timestamp) return "Unset"
 
   const dateObj = new Date(timestamp)
   

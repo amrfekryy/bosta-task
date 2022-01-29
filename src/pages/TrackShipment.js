@@ -12,7 +12,6 @@ import {
 } from '@mui/material'
 
 const url = 'https://tracking.bosta.co/shipments/track/'
-const shipments = ['6636234', '7234258', '9442984', '1094442']
 
 function getStateColor(state) {
   return {
@@ -37,16 +36,16 @@ function TrackShipment() {
   }, [shipment]);
 
   const {
-    CreateDate,
-    SupportPhoneNumbers,
-    TrackingURL,
+    CreateDate='',
+    SupportPhoneNumbers=[],
+    TrackingURL='',
     CurrentStatus,
     TrackingNumber: shipmentNumber,
     TransitEvents,
-    PromisedDate: deliveryDate
+    PromisedDate: deliveryDate = ''
   } = shipmentData || {}
 
-  console.table(TransitEvents)
+  // console.table(TransitEvents)
 
   const stateColor = getStateColor(CurrentStatus?.state)
 
