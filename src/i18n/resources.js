@@ -13,7 +13,7 @@ export const resources = {
       "DELIVERED": "Delivered",
       "RECEIVED_DELIVERY_LOCATION": "Received Delivery Location",
       "DELIVERED_TO_SENDER": "Delivered To Sender",
-      "": "",
+      "switch language": "عربي",
     }
   },
   ar: {
@@ -53,7 +53,7 @@ export const resources = {
       "Katamya Hub": "فرع القطامية",
       "Cairo Sorting Facility": "مبنى التوزيع بالقاهرة",
       "Bosta HQ": "مقر بوسطة",
-      "": "",
+      "switch language": "ENG",
     }
   }
 };
