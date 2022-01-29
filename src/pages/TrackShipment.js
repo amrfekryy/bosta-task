@@ -7,7 +7,7 @@ import Address from 'components/Address'
 import ReportProblem from 'components/ReportProblem';
 import { AppContext } from 'context';
 import {
-  Grid, Divider, Paper,
+  Grid, Divider, Paper, CircularProgress, Stack,
   Zoom, Collapse, Fade
 } from '@mui/material'
 
@@ -24,8 +24,10 @@ function TrackShipment() {
   const { shipment } = useContext(AppContext)
 
   const [shipmentData, setShipmentData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true)
 
     fetch(url + shipment)
       .then(res => res.json())
@@ -33,12 +35,14 @@ function TrackShipment() {
         // console.log('shipmentData', data);
         setShipmentData(data)
       })
+      .catch(error => console.error(error))
+      .finally(() => setLoading(false))
   }, [shipment]);
 
   const {
-    CreateDate='',
-    SupportPhoneNumbers=[],
-    TrackingURL='',
+    CreateDate = '',
+    SupportPhoneNumbers = [],
+    TrackingURL = '',
     CurrentStatus,
     TrackingNumber: shipmentNumber,
     TransitEvents,
@@ -49,8 +53,11 @@ function TrackShipment() {
 
   const stateColor = getStateColor(CurrentStatus?.state)
 
-  return (
-    <>
+  return loading
+    ? (<Stack direction="row" justifyContent="center">
+      <CircularProgress />
+    </Stack>)
+    : (<>
       {/* <Collapse in={!!shipmentData} orientation='horizontal' mountOnEnter unmountOnExit> */}
       <Grid container spacing={3}>
 
@@ -89,7 +96,7 @@ function TrackShipment() {
       </Grid>
       {/* </Collapse> */}
     </>
-  )
+    )
 }
 
 export default TrackShipment;
