@@ -25,7 +25,7 @@ function EventsTable({ TransitEvents }) {
         <Table sx={{ minWidth: 650 }}>
           <TableHead>
             <TableRow sx={{
-              bgcolor: '#FAFAFA',
+              bgcolor: 'custom.header',
               '& .MuiTableCell-root': {
                 color: "text.secondary"
               }

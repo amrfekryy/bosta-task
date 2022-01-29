@@ -32,6 +32,9 @@ const lightTheme = {
     secondary: {
       main: '#f50057',
     },
+    custom: {
+      header: '#fafafa'
+    }
   },
   typography: {
     fontFamily: 'Cairo, Roboto, sans-serif',
@@ -43,7 +46,10 @@ const darkTheme = {
   ...lightTheme,
   palette: {
     ...lightTheme.palette,
-    mode: 'dark'
+    mode: 'dark',
+    custom: {
+      header: 'grey'
+    }
   },
 }
 

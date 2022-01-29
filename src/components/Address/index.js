@@ -10,7 +10,7 @@ function Address() {
       <Title text={'Delivery Address'} />
       <Paper elevation={0} variant="outlined" flex={1}
         sx={{
-          bgcolor: '#FAFAFA',
+          bgcolor: 'custom.header',
           p: 2,
         }}
       >
