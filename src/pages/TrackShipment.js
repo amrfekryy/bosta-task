@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
 import MainInfo from 'components/MainInfo';
 import Stepper from 'components/Stepper'
 import EventsTable from 'components/EventsTable'
 import Address from 'components/Address'
 import ReportProblem from 'components/ReportProblem';
-import NumberInput from 'components/NumberInput'
-
+import { AppContext } from 'context';
 import {
   Grid, Divider, Paper,
   Zoom, Collapse, Fade
@@ -23,17 +22,19 @@ function getStateColor(state) {
 }
 
 function TrackShipment() {
+  const { shipment } = useContext(AppContext)
+
   const [shipmentData, setShipmentData] = useState(null);
 
   useEffect(() => {
 
-    fetch(url + shipments[1])
+    fetch(url + shipment)
       .then(res => res.json())
       .then(data => {
         // console.log('shipmentData', data);
         setShipmentData(data)
       })
-  }, []);
+  }, [shipment]);
 
   const {
     CreateDate,
@@ -51,43 +52,43 @@ function TrackShipment() {
 
   return (
     <>
-    {/* <Collapse in={!!shipmentData} orientation='horizontal' mountOnEnter unmountOnExit> */}
-        <Grid container spacing={3}>
+      {/* <Collapse in={!!shipmentData} orientation='horizontal' mountOnEnter unmountOnExit> */}
+      <Grid container spacing={3}>
 
-          <Grid item xs={12}>
-            <Paper elevation={0} variant="outlined">
-              <MainInfo {...{
-                shipmentNumber,
-                lastUpdate: CurrentStatus?.timestamp,
-                state: CurrentStatus?.state,
-                stateColor,
-                deliveryDate,
-              }} />
-              <Divider />
-              <Stepper />
-            </Paper>
-          </Grid>
-
-          <Grid item xs={12} md={8}>
-            <EventsTable {...{ TransitEvents }} />
-          </Grid>
-
-          <Grid item xs={12} md={4}>
-            <Grid container spacing={2}>
-
-              <Grid item xs={12} sm={6} md={12}>
-                <Address />
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={12}>
-                <ReportProblem />
-              </Grid>
-
-            </Grid>
-          </Grid>
-
+        <Grid item xs={12}>
+          <Paper elevation={0} variant="outlined">
+            <MainInfo {...{
+              shipmentNumber,
+              lastUpdate: CurrentStatus?.timestamp,
+              state: CurrentStatus?.state,
+              stateColor,
+              deliveryDate,
+            }} />
+            <Divider />
+            <Stepper />
+          </Paper>
         </Grid>
-    {/* </Collapse> */}
+
+        <Grid item xs={12} md={8}>
+          <EventsTable {...{ TransitEvents }} />
+        </Grid>
+
+        <Grid item xs={12} md={4}>
+          <Grid container spacing={2}>
+
+            <Grid item xs={12} sm={6} md={12}>
+              <Address />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={12}>
+              <ReportProblem />
+            </Grid>
+
+          </Grid>
+        </Grid>
+
+      </Grid>
+      {/* </Collapse> */}
     </>
   )
 }

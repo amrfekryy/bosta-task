@@ -55,6 +55,7 @@ export const resources = {
       "Cairo Sorting Facility": "مبنى التوزيع بالقاهرة",
       "Bosta HQ": "مقر بوسطة",
       "switch language": "ENG",
+      "search": "ابحث"
     }
   }
 };

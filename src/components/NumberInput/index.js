@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useTranslation } from 'react-i18next';
 import SearchIcon from '@mui/icons-material/Search'
-import { IconButton, Stack } from '@mui/material'
+import { IconButton, Stack, Tooltip } from '@mui/material'
+import { shipmentNumbers, AppContext } from 'context';
 
-
-const options = ['6636234', '7234258', '9442984', '1094442']
 
 export default function ControllableStates() {
   const { t } = useTranslation()
-  const [value, setValue] = React.useState(options[0]);
+
+  const { shipment, setShipment } = useContext(AppContext)
+  const [value, setValue] = React.useState(shipment);
+
 
   return (
     <Stack direction="row" alignItems="center" spacing={1}>
@@ -23,20 +25,24 @@ export default function ControllableStates() {
         onInputChange={(event, newInputValue) => {
           setValue(newInputValue);
         }}
-        options={options}
+        options={shipmentNumbers}
         noOptionsText={t('This number was not provided for testing, It may cause some UI errors')}
         sx={{ width: 200 }}
         renderInput={(params) =>
           <TextField {...params}
-          size='small'
+            size='small'
             label={t("Shipment Number")}
-            // variant="standard"
+          // variant="standard"
           />
         }
       />
-      <IconButton position="end" color='primary'>
-        <SearchIcon />
-      </IconButton>
+      <Tooltip title={t("search")}>
+        <IconButton position="end" color='primary' disabled={!value}
+          onClick={() => setShipment(value)}
+        >
+          <SearchIcon />
+        </IconButton>
+      </Tooltip>
     </Stack>
   );
 }
