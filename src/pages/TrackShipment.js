@@ -10,6 +10,7 @@ import {
   Grid, Divider, Paper, CircularProgress, Stack,
   Zoom, Collapse, Fade
 } from '@mui/material'
+import { ReactComponent as NotFound } from 'assets/not_found.svg'
 
 const url = 'https://tracking.bosta.co/shipments/track/'
 
@@ -53,10 +54,15 @@ function TrackShipment() {
 
   const stateColor = getStateColor(CurrentStatus?.state)
 
-  return loading
-    ? (<Stack direction="row" justifyContent="center">
-      <CircularProgress />
-    </Stack>)
+  const loadingJSX = (<Stack direction="row" justifyContent="center">
+    <CircularProgress />
+  </Stack>)
+
+  const notFoundJSX = (<Stack direction="row" justifyContent="center" sx={{mb: 2}}>
+    <NotFound width={300} height={300} />
+  </Stack>)
+
+  return loading ? loadingJSX : shipmentData?.error ? notFoundJSX 
     : (<>
       {/* <Collapse in={!!shipmentData} orientation='horizontal' mountOnEnter unmountOnExit> */}
       <Grid container spacing={3}>
