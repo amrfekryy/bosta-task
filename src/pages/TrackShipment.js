@@ -5,9 +5,10 @@ import Stepper from 'components/Stepper'
 import EventsTable from 'components/EventsTable'
 import Address from 'components/Address'
 import ReportProblem from 'components/ReportProblem';
+import NumberInput from 'components/NumberInput'
 
 import {
-  Grid, Divider, Paper, 
+  Grid, Divider, Paper,
   Zoom, Collapse, Fade
 } from '@mui/material'
 
@@ -49,43 +50,45 @@ function TrackShipment() {
   const stateColor = getStateColor(CurrentStatus?.state)
 
   return (
-    // <Collapse in={!!shipmentData} orientation='horizontal' mountOnEnter unmountOnExit>
-      <Grid container spacing={3}>
+    <>
+    {/* <Collapse in={!!shipmentData} orientation='horizontal' mountOnEnter unmountOnExit> */}
+        <Grid container spacing={3}>
 
-        <Grid item xs={12}>
-          <Paper elevation={0} variant="outlined">
-            <MainInfo {...{
-              shipmentNumber, 
-              lastUpdate: CurrentStatus?.timestamp,
-              state: CurrentStatus?.state,
-              stateColor,
-              deliveryDate,
-            }}/>
-            <Divider />
-            <Stepper />
-          </Paper>
-        </Grid>
-        
-        <Grid item xs={12} md={8}>
-          <EventsTable {...{ TransitEvents }} />
-        </Grid>
-        
-        <Grid item xs={12} md={4}>
-          <Grid container spacing={2}>
-
-            <Grid item xs={12} sm={6} md={12}>
-              <Address />
-            </Grid>
-            
-            <Grid item xs={12} sm={6} md={12}>
-              <ReportProblem />
-            </Grid>
-          
+          <Grid item xs={12}>
+            <Paper elevation={0} variant="outlined">
+              <MainInfo {...{
+                shipmentNumber,
+                lastUpdate: CurrentStatus?.timestamp,
+                state: CurrentStatus?.state,
+                stateColor,
+                deliveryDate,
+              }} />
+              <Divider />
+              <Stepper />
+            </Paper>
           </Grid>
-        </Grid>
 
-      </Grid>
-    // </Collapse>
+          <Grid item xs={12} md={8}>
+            <EventsTable {...{ TransitEvents }} />
+          </Grid>
+
+          <Grid item xs={12} md={4}>
+            <Grid container spacing={2}>
+
+              <Grid item xs={12} sm={6} md={12}>
+                <Address />
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={12}>
+                <ReportProblem />
+              </Grid>
+
+            </Grid>
+          </Grid>
+
+        </Grid>
+    {/* </Collapse> */}
+    </>
   )
 }
 

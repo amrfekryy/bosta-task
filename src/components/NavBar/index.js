@@ -7,7 +7,7 @@ import {
 import { MyThemeContext } from 'theme'
 import ModeBtn from 'components/ModeBtn'
 import LanguageBtn from 'components/LanguageBtn'
-
+import NumberInput from 'components/NumberInput'
 
 function NavBar() {
   const { rtl } = useContext(MyThemeContext)
@@ -19,10 +19,11 @@ function NavBar() {
     elevation={0}
   >
     <Stack
-      direction="row" alignItems="center" justifyContent="space-between"
-      sx={{ height: 70, px: 5 }}
+      direction="row" alignItems="center" justifyContent="space-between" flexWrap="wrap"
+      sx={{ minHeight: 70, px: 5 }}
     >
       <Logo width={100} height={100} />
+      <NumberInput />
       <Box>
         <ModeBtn />
         <LanguageBtn />

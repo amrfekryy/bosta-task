@@ -19,6 +19,7 @@ export const resources = {
   ar: {
     translation: {
       "Shipment No. ": "رقم الشحنة ",
+      "Shipment Number": "رقم الشحنة ",
       "Last Update": "اخر تحديث",
       "Vendor Name": "اسم التاجر",
       "Delivery Date": "موعد التسليم خلال",
