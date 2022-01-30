@@ -7,11 +7,14 @@ import { useTranslation } from 'react-i18next';
 function ReportProblem() {
   const { t } = useTranslation()
 
-  return <Paper elevation={0} variant="outlined">
-    <Stack direction="row" spacing={1}>
+  return <Paper elevation={0} variant="outlined" sx={{ height: '100%', p: 1 }}>
+    <Stack
+      direction="row" justifyContent="center" alignItems="center" spacing={1}
+      sx={{ height: '100%' }}
+    >
       <Icon width={100} height={100} />
-      <Stack justifyContent="center" alignItems="center" sx={{ textAlign: 'center' }} spacing={1}>
-        <Typography>{t('Is there a problem in your shipment?')}</Typography>
+      <Stack justifyContent="center" alignItems="center" spacing={1}>
+        <Typography align="center">{t('Is there a problem in your shipment?')}</Typography>
         <Button variant="contained" disableElevation size="small"
           sx={{ borderRadius: 2 }}
         >

@@ -15,7 +15,7 @@ export default function ControllableStates() {
 
 
   return (
-    <Stack direction="row" alignItems="center" spacing={1}>
+    <Stack direction="row" alignItems="center" spacing={0.5}>
       <Autocomplete
         // freeSolo
         value={value}
