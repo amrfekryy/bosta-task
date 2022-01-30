@@ -20,7 +20,7 @@ function RTL({ children }) {
   return <div dir='rtl'>
     <CacheProvider value={cacheRtl}>
       {children}
-    </CacheProvider>;
+    </CacheProvider>
   </div>
 }
 
