@@ -55,7 +55,7 @@ const darkTheme = {
 
 export default function MyThemeProvider({ children }) {
 
-  const [rtl, setRtl] = useState(false);
+  const [rtl, setRtl] = useState(true);
   i18n.changeLanguage(rtl ? 'ar' : 'en')
   const switchDir = () => setRtl(s => !s)
 
