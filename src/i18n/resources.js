@@ -14,6 +14,7 @@ export const resources = {
       "RECEIVED_DELIVERY_LOCATION": "Received Delivery Location",
       "DELIVERED_TO_SENDER": "Delivered To Sender",
       "switch language": "عربي",
+      "address": "Los Angeles, California(CA), 90071"
     }
   },
   ar: {
@@ -55,7 +56,8 @@ export const resources = {
       "Cairo Sorting Facility": "مبنى التوزيع بالقاهرة",
       "Bosta HQ": "مقر بوسطة",
       "switch language": "ENG",
-      "search": "ابحث"
+      "search": "ابحث",
+      "address": "امبابة شارع طلعت حرب مدينة العمال بجوار البرنس منزل 17 بلوك 22",
     }
   }
 };

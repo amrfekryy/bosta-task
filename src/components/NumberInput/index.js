@@ -6,6 +6,9 @@ import SearchIcon from '@mui/icons-material/Search'
 import { IconButton, Stack, Tooltip } from '@mui/material'
 import { shipmentNumbers, AppContext } from 'context';
 
+const message = `
+Hi there, please be aware that this number was not provided in the task description. It may cause UI bugs like wrong shipment status, or untranslated text in the details table.
+`
 
 export default function ControllableStates() {
   const { t } = useTranslation()
@@ -26,7 +29,7 @@ export default function ControllableStates() {
           setValue(newInputValue);
         }}
         options={shipmentNumbers}
-        noOptionsText={t('This number was not provided for testing, It may cause some UI errors')}
+        noOptionsText={t(message)}
         sx={{ width: 200 }}
         renderInput={(params) =>
           <TextField {...params}

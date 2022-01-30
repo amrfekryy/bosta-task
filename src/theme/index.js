@@ -48,7 +48,7 @@ const darkTheme = {
     ...lightTheme.palette,
     mode: 'dark',
     custom: {
-      header: 'grey'
+      header: 'inherit'
     }
   },
 }

@@ -12,11 +12,11 @@ function ReportProblem() {
       direction="row" justifyContent="center" alignItems="center" spacing={1}
       sx={{ height: '100%' }}
     >
-      <Icon width={100} height={100} />
+      <Icon width={90} height={90} />
       <Stack justifyContent="center" alignItems="center" spacing={1}>
-        <Typography align="center">{t('Is there a problem in your shipment?')}</Typography>
-        <Button variant="contained" disableElevation size="small"
-          sx={{ borderRadius: 2 }}
+        <Typography align="center" fontSize="0.7rem">{t('Is there a problem in your shipment?')}</Typography>
+        <Button variant="contained" disableElevation 
+          sx={{ borderRadius: 2, fontSize: '0.6rem' }}
         >
           {t('Report a problem')}
         </Button>

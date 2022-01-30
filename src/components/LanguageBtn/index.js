@@ -7,9 +7,7 @@ export default function LanguageBtn() {
   const { switchDir } = React.useContext(MyThemeContext)
   const { t } = useTranslation()
 
-  return <Button
-    onClick={switchDir}
-  >
+  return <Button onClick={switchDir} size="large" sx={{ minWidth: 0}}>
     {t('switch language')}
   </Button>
 }

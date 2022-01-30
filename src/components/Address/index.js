@@ -2,9 +2,12 @@ import React from 'react';
 import {
   Paper, Typography
 } from '@mui/material'
-import Title from '../Title';
+import Title from 'components/Title';
+import { useTranslation } from 'react-i18next';
 
 function Address() {
+  const { t } = useTranslation()
+
   return (
     <>
       <Title text={'Delivery Address'} />
@@ -15,8 +18,7 @@ function Address() {
         }}
       >
         <Typography variant="subtitle2" color="text.secondary" fontWeight={300}>
-
-          {'امبابة شارع طلعت حرب مدينة العمال بجوار البرنس منزل 17 بلوك 22'}
+          {t('address')}
         </Typography>
       </Paper>
     </>

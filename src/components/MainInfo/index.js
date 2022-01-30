@@ -6,10 +6,10 @@ import { formatDate } from 'helpers/functions'
 import { useTranslation } from 'react-i18next';
 
 function Item({ title = "title", value = "value", color }) {
-  return <Stack spacing={0.3} alignItems={"center"}
+  return <Stack spacing={0.5} alignItems={"center"}
     sx={{p: 0.5}}
   >
-    <Typography align="center" color="text.disabled" variant="overline">{title}</Typography>
+    <Typography align="center" color="text.secondary" fontSize="0.77rem">{title}</Typography>
     <Typography align="center" color={color}>{value}</Typography>
   </Stack>
 }

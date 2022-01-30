@@ -63,7 +63,7 @@ function TrackShipment() {
     fetch(url + shipment)
       .then(res => res.json())
       .then(data => {
-        console.log('shipmentData', data);
+        // console.log('shipmentData', data);
         setShipmentData(data)
       })
       .catch(error => console.error(error))
