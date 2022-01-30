@@ -5,7 +5,7 @@ export const warningCase = {
     "reason": "العميل طلب التاجيل ليوم اخر"
   },
   "PromisedDate": "2020-07-22T11:08:38.483Z",
-  "TrackingNumber": "7234258",
+  "TrackingNumber": "mock case",
   "TrackingURL": "bosta.co/tracking-shipment/?track_num=7234258",
   "SupportPhoneNumbers": [
     "19043"
@@ -61,7 +61,7 @@ export const errorCase = {
     "timestamp": "2020-07-25T12:25:31.247Z"
   },
   "PromisedDate": "2020-07-22T11:08:38.483Z",
-  "TrackingNumber": "7234258",
+  "TrackingNumber": "mock case",
   "TrackingURL": "bosta.co/tracking-shipment/?track_num=7234258",
   "SupportPhoneNumbers": [
     "19043"
