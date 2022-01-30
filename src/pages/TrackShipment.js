@@ -8,7 +8,7 @@ import ReportProblem from 'components/ReportProblem';
 import { AppContext } from 'context';
 import {
   Grid, Divider, Paper, CircularProgress, Stack,
-  Zoom, Collapse, Fade
+  Zoom, Collapse, Fade, Slide
 } from '@mui/material'
 import { ReactComponent as NotFound } from 'assets/not_found.svg'
 import { warningCase, errorCase } from './mock_data';
@@ -85,7 +85,7 @@ function TrackShipment() {
     fetch(url + shipment)
       .then(res => res.json())
       .then(data => {
-        console.log('shipmentData', JSON.stringify(data, null, 2));
+        // console.log('shipmentData', JSON.stringify(data, null, 2));
         setShipmentData(data)
       })
       .catch(error => console.error(error))
@@ -96,7 +96,7 @@ function TrackShipment() {
     CreateDate = '',
     SupportPhoneNumbers = [],
     TrackingURL = '',
-    CurrentStatus={},
+    CurrentStatus = {},
     TrackingNumber: shipmentNumber,
     TransitEvents,
     PromisedDate: deliveryDate = ''
@@ -116,43 +116,43 @@ function TrackShipment() {
 
   return loading ? loadingJSX : shipmentData?.error ? notFoundJSX
     : (<>
-      {/* <Collapse in={!!shipmentData} orientation='horizontal' mountOnEnter unmountOnExit> */}
-      <Grid container spacing={3}>
+      <Fade in={!!shipmentData} timeout={600} orientation='horizontal' mountOnEnter unmountOnExit>
+        <Grid container spacing={3}>
 
-        <Grid item xs={12}>
-          <Paper elevation={0} variant="outlined">
-            <MainInfo {...{
-              shipmentNumber,
-              lastUpdate: CurrentStatus?.timestamp,
-              state: CurrentStatus?.state,
-              status,
-              deliveryDate,
-            }} />
-            <Divider />
-            <Stepper {...{status}}/>
-          </Paper>
-        </Grid>
-
-        <Grid item xs={12} md={8}>
-          <EventsTable {...{ TransitEvents }} />
-        </Grid>
-
-        <Grid item xs={12} md={4}>
-          <Grid container spacing={2}>
-
-            <Grid item xs={12} sm={6} md={12}>
-              <Address />
-            </Grid>
-
-            <Grid item xs={12} sm={6} md={12}>
-              <ReportProblem />
-            </Grid>
-
+          <Grid item xs={12}>
+            <Paper elevation={0} variant="outlined">
+              <MainInfo {...{
+                shipmentNumber,
+                lastUpdate: CurrentStatus?.timestamp,
+                state: CurrentStatus?.state,
+                status,
+                deliveryDate,
+              }} />
+              <Divider />
+              <Stepper {...{ status }} />
+            </Paper>
           </Grid>
-        </Grid>
 
-      </Grid>
-      {/* </Collapse> */}
+          <Grid item xs={12} md={8}>
+            <EventsTable {...{ TransitEvents }} />
+          </Grid>
+
+          <Grid item xs={12} md={4}>
+            <Grid container spacing={2}>
+
+              <Grid item xs={12} sm={6} md={12}>
+                <Address />
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={12}>
+                <ReportProblem />
+              </Grid>
+
+            </Grid>
+          </Grid>
+
+        </Grid>
+      </Fade>
     </>
     )
 }
