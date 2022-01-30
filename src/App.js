@@ -1,4 +1,3 @@
-import './App.css';
 import TrackShipment from './pages/TrackShipment';
 import Layout from './pages/Layout'
 import MyThemeProvider from './theme';

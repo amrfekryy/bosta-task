@@ -35,7 +35,6 @@ export default function ControllableStates() {
           <TextField {...params}
             size='small'
             label={t("Shipment Number")}
-          // variant="standard"
           />
         }
       />

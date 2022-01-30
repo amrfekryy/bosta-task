@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Stack, Box, Typography, Grid
+  Stack, Typography, Grid
 } from '@mui/material'
 import { formatDate } from 'helpers/functions'
 import { useTranslation } from 'react-i18next';

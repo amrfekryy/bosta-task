@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper } from '@mui/material'
-import { ReactComponent as Icon } from '../../assets/question.svg'
+import { ReactComponent as Icon } from 'assets/question.svg'
 import { Stack, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next';
 

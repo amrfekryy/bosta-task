@@ -16,10 +16,7 @@ function NavBar() {
 
   const Logo = rtl ? LogoAr : LogoEn
 
-  return <Paper
-    // variant='outlined'
-    elevation={0}
-  >
+  return <Paper elevation={0}>
     <Stack
       direction="row" alignItems="center" justifyContent="space-between" flexWrap="wrap"
       sx={{ minHeight: 70, px: 5 }}

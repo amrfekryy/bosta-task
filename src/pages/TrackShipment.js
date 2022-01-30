@@ -7,8 +7,7 @@ import Address from 'components/Address'
 import ReportProblem from 'components/ReportProblem';
 import { AppContext } from 'context';
 import {
-  Grid, Divider, Paper, CircularProgress, Stack,
-  Zoom, Collapse, Fade, Slide
+  Grid, Divider, Paper, CircularProgress, Stack, Fade
 } from '@mui/material'
 import { ReactComponent as NotFound } from 'assets/not_found.svg'
 import { warningCase, errorCase } from './mock_data';

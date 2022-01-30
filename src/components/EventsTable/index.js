@@ -7,8 +7,6 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Typography,
-  Stack
 } from '@mui/material'
 import Title from 'components/Title'
 import { formatDate } from 'helpers/functions'
@@ -22,9 +20,7 @@ function EventsTable({ TransitEvents }) {
       <Title text={'Shipment Details'} />
 
       <TableContainer component={Paper}>
-        <Table 
-          // sx={{ minWidth: 650 }}
-        >
+        <Table>
           <TableHead>
             <TableRow sx={{
               bgcolor: 'custom.header',
