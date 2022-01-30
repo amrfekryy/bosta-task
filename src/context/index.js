@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export const AppContext = React.createContext({})
 
-export const shipmentNumbers = ['6636234', '7234258', '9442984', '1094442']
+export const shipmentNumbers = ['6636234', '7234258', '9442984', '1094442', 'mock canceled case', 'mock warning case']
 
 function AppContextProvider({ children }) {
   const [shipment, setShipment] = useState(shipmentNumbers[0]);

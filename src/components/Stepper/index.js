@@ -1,11 +1,15 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 
-import Stack from '@mui/material/Stack';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
+import {
+  Typography,
+  Stack,
+  Stepper,
+  Step,
+  StepLabel,
+  StepConnector,
+  stepConnectorClasses
+} from '@mui/material'
 
 import Check from '@mui/icons-material/Check';
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
@@ -85,21 +89,27 @@ function ColorlibStepIcon(props) {
 
 const steps = ['Ticket Created', 'Package Received', 'Out for Delivery', 'Delivered'];
 
-export default function CustomizedSteppers({status}) {
+export default function CustomizedSteppers({ status }) {
   const { t } = useTranslation()
   const { palette } = useTheme()
   const statusColor = getValue(palette, status.color)
 
+  const secondaryLabel = status.reason || status.hub
+
   return (
     <Stack sx={{ width: '100%', p: 2 }} spacing={4}>
       <Stepper alternativeLabel activeStep={status.step} connector={<ColorlibConnector statusColor={statusColor} />}>
-        {steps.map((label) => (
+        {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel
               StepIconComponent={ColorlibStepIcon}
               StepIconProps={{ statusColor: statusColor }}
             >
               {t(label)}
+              {index === status.step && secondaryLabel &&
+                <Typography sx={{ mt: 1 }} color={status.color} fontSize="0.6rem">
+                  {secondaryLabel}
+                </Typography>}
             </StepLabel>
           </Step>
         ))}

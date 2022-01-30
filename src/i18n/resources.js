@@ -47,6 +47,7 @@ export const resources = {
       "DELIVERED": "تم التسليم",
       "RECEIVED_DELIVERY_LOCATION": "تم تحديد مكان التسليم",
       "DELIVERED_TO_SENDER": "تم التسليم الى المرسل",
+      "CANCELED": "تم إلغاء الشحنة",
       
       // hubs from API
       "Mohandseen Hub": "فرع المهندسين",

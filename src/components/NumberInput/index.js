@@ -7,7 +7,7 @@ import { IconButton, Stack, Tooltip } from '@mui/material'
 import { shipmentNumbers, AppContext } from 'context';
 
 const message = `
-Hi there, please be aware that this number was not provided in the task description. It may cause UI bugs like wrong shipment status, or untranslated text in the details table.
+Hi there, please be aware that the task doesn't handle all possible cases since I was only provided with 4 tracking numbers. Feel free to try other numbers but they may cause UI bugs like wrong shipment status, or untranslated text in the details table.
 `
 
 export default function ControllableStates() {

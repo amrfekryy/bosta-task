@@ -11,6 +11,7 @@ import {
   Zoom, Collapse, Fade
 } from '@mui/material'
 import { ReactComponent as NotFound } from 'assets/not_found.svg'
+import { warningCase, errorCase } from './mock_data';
 
 const url = 'https://tracking.bosta.co/shipments/track/'
 
@@ -37,6 +38,7 @@ function analyzeStatus(CurrentStatus) {
       break;
     case "WAITING_FOR_CUSTOMER_ACTION":
       step = 2
+      color = "warning.light"
       break;
     case "RECEIVED_DELIVERY_LOCATION":
       step = 2
@@ -47,23 +49,43 @@ function analyzeStatus(CurrentStatus) {
     case "DELIVERED_TO_SENDER":
       step = 3
       break;
+    case "CANCELED":
+      step = 1
+      color = "error.dark"
+      break;
+    default:
+      break;
   }
-  return { step, color, hub, state }
+  return { step, color, ...CurrentStatus }
 }
 
 function TrackShipment() {
   const { shipment } = useContext(AppContext)
 
   const [shipmentData, setShipmentData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+
+  const checkIfMock = () => {
+    if (shipment === 'mock canceled case') {
+      setShipmentData(errorCase)
+      return true
+    }
+    else if (shipment === 'mock warning case') {
+      setShipmentData(warningCase)
+      return true
+    }
+    return false
+  }
 
   useEffect(() => {
+    if (checkIfMock()) return
+
     setLoading(true)
 
     fetch(url + shipment)
       .then(res => res.json())
       .then(data => {
-        // console.log('shipmentData', data);
+        console.log('shipmentData', JSON.stringify(data, null, 2));
         setShipmentData(data)
       })
       .catch(error => console.error(error))
